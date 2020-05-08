@@ -1,3 +1,16 @@
+function findLowerSquare(number){
+  var i = 1;
+  while(true){
+    var square = i * i;
+    if (square > number){
+      break;
+    };
+    i++;
+  }
+  return i - 1;
+}
+
+
 function encryptSentence(sentence){
  
   var wordsFlat = sentence.split("").filter(function(character){
@@ -43,7 +56,7 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  
+  console.log(findLowerSquare(69));
   console.log(finalSentence)
   console.log(finalArray)
   console.log(removeSpaces);
