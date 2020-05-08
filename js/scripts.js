@@ -1,6 +1,6 @@
 function encryptSentence(sentence){
  var length = sentence.split("").filter(function(character){
-  /[a-z]/i.test(character);
+  return /[a-z]/i.test(character);
  }).length;
 
  var words = sentence.split(" ").map(function (word){
@@ -8,6 +8,22 @@ function encryptSentence(sentence){
     return /[a-z]/i.test(character);
   });
 });
+
+
+var column = 8;
+var row = 9;
+var wordsFlat = words.flat();
+var array2d = [];
+for(var i = 1; i <= row; i++) {
+   if (wordsFlat.length < column){
+     var length = wordsFlat.length
+     array2d.push(wordsFlat.splice(0, wordsFlat.length).concat(Array(column - length).fill(" ")));
+   }
+   else{
+   array2d.push(wordsFlat.splice(0,column));
+   }
+}
+console.log(array2d);
 console.log(length);
 console.log(words);
 }
