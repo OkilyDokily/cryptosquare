@@ -3,16 +3,15 @@ function encryptSentence(sentence){
   return /[a-z]/i.test(character);
  }).length;
 
- var words = sentence.split(" ").map(function (word){
-  return word.split("").filter(function(character){
-    return /[a-z]/i.test(character);
-  });
-});
+ var wordsFlat  = sentence.split("").filter(function(character){
+  return /[a-z]/i.test(character);
+ });
+
 
 
 var column = 8;
 var row = 9;
-var wordsFlat = words.flat();
+
 
 //create the square
 var array2d = [];
@@ -37,7 +36,6 @@ for(var j = 0; j < column; j++){
 
 console.log(array2d);
 console.log(length);
-console.log(words);
 console.log(new1dArray);
 }
 
