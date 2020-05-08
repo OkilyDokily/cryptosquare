@@ -13,6 +13,8 @@ function encryptSentence(sentence){
 var column = 8;
 var row = 9;
 var wordsFlat = words.flat();
+
+//create the square
 var array2d = [];
 for(var i = 1; i <= row; i++) {
    if (wordsFlat.length < column){
@@ -23,9 +25,20 @@ for(var i = 1; i <= row; i++) {
    array2d.push(wordsFlat.splice(0,column));
    }
 }
+
+//flatten the square
+var new1dArray = [];
+for(var j = 0; j < column; j++){
+  for(var i = 0; i < row; i++){
+    new1dArray.push(array2d[i][j]); 
+  }
+}
+
+
 console.log(array2d);
 console.log(length);
 console.log(words);
+console.log(new1dArray);
 }
 
 
