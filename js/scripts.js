@@ -1,11 +1,10 @@
 function encryptSentence(sentence){
- var length = sentence.split("").filter(function(character){
-  return /[a-z]/i.test(character);
- }).length;
-
- var wordsFlat  = sentence.split("").filter(function(character){
+ 
+ var wordsFlat = sentence.split("").filter(function(character){
   return /[a-z]/i.test(character);
  });
+
+ var length = wordsFlat.length;
 
 
 
