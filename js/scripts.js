@@ -21,6 +21,41 @@ function findHigherSquare(number){
   return i;
 }
 
+function decideWhichWidthToUseForTable(number){
+    if(isPerfectSquare(number)){
+      return {columns:Math.floor(Math.sqrt(number)),rows: Math.floor(Math.sqrt(number))}
+    }
+    var lowerColumn = findLowerSquare(number);
+    var numberOfRowsToAddToLowerSquare = findNumberOfRowsToAddToLowerSquare(lowerColumn, number)
+    var rowsForLowerSquare = numberOfRowsToAddToLowerSquare + lowerColumn;
+
+
+    var higherColumn = findHigherSquare(number);
+    var numberOfRowsToSubtractFromHigherSquare = findNumberOfRowsToSubtractFromHigherSquare(higherColumn,number); 
+    var rowsForHigherSquare = higherColumn - numberOfRowsToAddToLowerSquare;
+    
+    if(numberOfRowsToAddToLowerSquare < numberOfRowsToSubtractFromHigherSquare){
+      return {columns:lowerColumn,rows:rowsForLowerSquare}
+    }
+    else if(numberOfRowsToSubtractFromHigherSquare < numberOfRowsToAddToLowerSquare){
+      return {columns:higherColumn,rows:rowsForHigherSquare}
+    }
+    else{
+      if(findNumberOfExcessCharactersOnTheHigherSquare(number) === findNumberOfExcessCharactersOnTheHigherSquare(number))
+      {
+        return {columns:lowerColumn,rows:rowsForLowerSquare}
+      }
+      else if(findNumberOfExcessCharactersOnTheHigherSquare(number) < findNumberOfExcessCharactersOnTheHigherSquare(number)){
+        return {columns:lowerColumn,rows:rowsForLowerSquare}
+      }
+      else{
+        return {columns:higherColumn,rows:rowsForHigherSquare}
+      }
+    }
+
+}
+
+
 function findNumberOfExcessCharactersOnTheLowerSquare(number){
   var lowerSquare = findLowerSquare(number);
   var numberOfRowsToAdd = findNumberOfRowsToAddToLowerSquare(lowerSquare,number);
@@ -81,6 +116,8 @@ function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
   }
 }
 
+
+
 function encryptSentence(sentence){
  
   var wordsFlat = sentence.split("").filter(function(character){
@@ -126,8 +163,8 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  console.log(findNumberOfExcessCharactersOnTheLowerSquare(401));
-  console.log(findNumberOfExcessCharactersOnTheHigherSquare(401));
+  console.log(decideWhichWidthToUseForTable(401));
+  console.log(decideWhichWidthToUseForTable(326));
 
 
 }
