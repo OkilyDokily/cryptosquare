@@ -22,11 +22,16 @@ function findHigherSquare(number){
 }
 
 function findNumberOfExcessCharactersOnTheLowerSquare(number){
+  console.log(number);
   var lowerSquare = findLowerSquare(number);
+  console.log(lowerSquare)
   var numberOfRowsToAdd = findNumberOfRowsToAddToLowerSquare(lowerSquare,number);
+  console.log(numberOfRowsToAdd)
   var rows = numberOfRowsToAdd + lowerSquare;
   var columns = lowerSquare;
-  
+  var total = columns * rows;
+  return total - number;
+
 }
 
 function isPerfectSquare(number){
@@ -41,7 +46,7 @@ function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
   var column = lowerSquareRoot;
   
   while(true){
-    if((totalOfRows * column) > number){
+    if((totalOfRows * column) >= number){
       return totalOfRows - lowerSquareRoot;
     }
     else{
@@ -58,7 +63,7 @@ function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
   var column = higherSquareRoot;
   
   while(true){
-    if((totalOfRows * column) < number){
+    if((totalOfRows * column) <= number){
       return higherSquareRoot - (totalOfRows + 1);
     }
     else{
@@ -113,13 +118,7 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  console.log(findLowerSquare(326));
-  console.log(findHigherSquare(326));
-  console.log(findNumberOfRowsToAddToLowerSquare(7, 60));
-  console.log(findNumberOfRowsToSubtractFromHigherSquare(19, 326));
-  console.log(isPerfectSquare(49));
-  console.log(isPerfectSquare(50));
-  console.log(isPerfectSquare(64));
+  console.log(findNumberOfExcessCharactersOnTheLowerSquare(56));
 
 
 }
