@@ -21,7 +21,7 @@ function findHigherSquare(number){
   return i;
 }
 
-function decideWhichWidthToUseForTable(number){
+function createTableDimensions(number){
     if(isPerfectSquare(number)){
       return {columns:Math.floor(Math.sqrt(number)),rows: Math.floor(Math.sqrt(number))}
     }
@@ -41,41 +41,20 @@ function decideWhichWidthToUseForTable(number){
       return {columns:higherColumn,rows:rowsForHigherSquare}
     }
     else{
-      if(findNumberOfExcessCharactersOnTheHigherSquare(number) === findNumberOfExcessCharactersOnTheHigherSquare(number))
+      var numberOfExcessCharactersOnTheLowerSquare = ((rowsForLowerSquare * lowerColumn) - number);
+      var numberOfExcessCharactersOnTheHigherSquare = ((rowsForHigherSquare *higherColumn) - number);
+      
+      if(numberOfExcessCharactersOnTheLowerSquare === numberOfExcessCharactersOnTheHigherSquare)
       {
         return {columns:lowerColumn,rows:rowsForLowerSquare}
       }
-      else if(findNumberOfExcessCharactersOnTheHigherSquare(number) < findNumberOfExcessCharactersOnTheHigherSquare(number)){
+      else if(numberOfExcessCharactersOnTheLowerSquare < numberOfExcessCharactersOnTheHigherSquare){
         return {columns:lowerColumn,rows:rowsForLowerSquare}
       }
       else{
         return {columns:higherColumn,rows:rowsForHigherSquare}
       }
     }
-
-}
-
-
-function findNumberOfExcessCharactersOnTheLowerSquare(number){
-  var lowerSquare = findLowerSquare(number);
-  var numberOfRowsToAdd = findNumberOfRowsToAddToLowerSquare(lowerSquare,number);
-
-  var rows = numberOfRowsToAdd + lowerSquare;
-  
-  var columns = lowerSquare;
-  var total = columns * rows;
-  return total - number;
-}
-
-
-function findNumberOfExcessCharactersOnTheHigherSquare(number){
-  var higherSquare = findHigherSquare(number);
-  var numberOfRowsToSubtract = findNumberOfRowsToSubtractFromHigherSquare(higherSquare,number);
-  var rows = higherSquare - numberOfRowsToSubtract;
-  
-  var columns = higherSquare;
-  var total = columns * rows;
-  return total - number;
 }
 
 function isPerfectSquare(number){
@@ -125,7 +104,7 @@ function encryptSentence(sentence){
   });
 
   var length = wordsFlat.length;
-  var table = decideWhichWidthToUseForTable(length);
+  var table = createTableDimensions(length);
 
   var column = table.columns;
   var row = table.rows;
