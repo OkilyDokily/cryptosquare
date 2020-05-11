@@ -22,22 +22,30 @@ function findHigherSquare(number){
 }
 
 function findNumberOfExcessCharactersOnTheLowerSquare(number){
-  console.log(number);
   var lowerSquare = findLowerSquare(number);
-  console.log(lowerSquare)
   var numberOfRowsToAdd = findNumberOfRowsToAddToLowerSquare(lowerSquare,number);
-  console.log(numberOfRowsToAdd)
+
   var rows = numberOfRowsToAdd + lowerSquare;
   
   var columns = lowerSquare;
   var total = columns * rows;
   return total - number;
+}
 
+
+function findNumberOfExcessCharactersOnTheHigherSquare(number){
+  var higherSquare = findHigherSquare(number);
+  var numberOfRowsToSubtract = findNumberOfRowsToSubtractFromHigherSquare(higherSquare,number);
+  var rows = higherSquare - numberOfRowsToSubtract;
+  
+  var columns = higherSquare;
+  var total = columns * rows;
+  return total - number;
 }
 
 function isPerfectSquare(number){
   var test = Math.floor(Math.sqrt(number))
-  return ((test * test) === number) ? true: false;
+  return ((test * test) === number);
 }
 
 function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
@@ -72,7 +80,6 @@ function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
     }
   }
 }
-
 
 function encryptSentence(sentence){
  
@@ -119,7 +126,8 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  console.log(findNumberOfExcessCharactersOnTheLowerSquare(69));
+  console.log(findNumberOfExcessCharactersOnTheLowerSquare(401));
+  console.log(findNumberOfExcessCharactersOnTheHigherSquare(401));
 
 
 }
