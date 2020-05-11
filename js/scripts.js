@@ -21,6 +21,19 @@ function findHigherSquare(number){
   return i;
 }
 
+function findNumberOfExcessCharactersOnTheLowerSquare(number){
+  var lowerSquare = findLowerSquare(number);
+  var numberOfRowsToAdd = findNumberOfRowsToAddToLowerSquare(lowerSquare,number);
+  var rows = numberOfRowsToAdd + lowerSquare;
+  var columns = lowerSquare;
+  
+}
+
+function isPerfectSquare(number){
+  var test = Math.floor(Math.sqrt(number))
+  return ((test * test) === number) ? true: false;
+}
+
 function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
   var square = lowerSquareRoot * lowerSquareRoot;
   
@@ -37,7 +50,6 @@ function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
   }
 }
 
-if isP
 
 function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
   var square = higherSquareRoot * higherSquareRoot;
@@ -54,8 +66,6 @@ function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
     }
   }
 }
-
-
 
 
 function encryptSentence(sentence){
@@ -107,6 +117,11 @@ function encryptSentence(sentence){
   console.log(findHigherSquare(326));
   console.log(findNumberOfRowsToAddToLowerSquare(7, 60));
   console.log(findNumberOfRowsToSubtractFromHigherSquare(19, 326));
+  console.log(isPerfectSquare(49));
+  console.log(isPerfectSquare(50));
+  console.log(isPerfectSquare(64));
+
+
 }
 
 
