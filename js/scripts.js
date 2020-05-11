@@ -28,6 +28,7 @@ function findNumberOfExcessCharactersOnTheLowerSquare(number){
   var numberOfRowsToAdd = findNumberOfRowsToAddToLowerSquare(lowerSquare,number);
   console.log(numberOfRowsToAdd)
   var rows = numberOfRowsToAdd + lowerSquare;
+  
   var columns = lowerSquare;
   var total = columns * rows;
   return total - number;
@@ -118,7 +119,7 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  console.log(findNumberOfExcessCharactersOnTheLowerSquare(56));
+  console.log(findNumberOfExcessCharactersOnTheLowerSquare(69));
 
 
 }
