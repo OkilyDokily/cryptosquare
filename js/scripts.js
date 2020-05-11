@@ -21,20 +21,34 @@ function findHigherSquare(number){
   return i;
 }
 
-function findNumberOfRowsToAddToAddToLower(lowerSquareRoot,number){
+function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
   var square = lowerSquareRoot * lowerSquareRoot;
-  var difference = number - square;
-
+  
   var totalOfRows = lowerSquareRoot + 1;
   var column = lowerSquareRoot;
   
-
   while(true){
-    if(totalOfRows * column > number){
+    if((totalOfRows * column) > number){
       return totalOfRows - lowerSquareRoot;
     }
     else{
       totalOfRows += 1;
+    }
+  }
+}
+
+function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
+  var square = higherSquareRoot * higherSquareRoot;
+  
+  var totalOfRows = higherSquareRoot - 1;
+  var column = higherSquareRoot;
+  
+  while(true){
+    if((totalOfRows * column) < number){
+      return higherSquareRoot - (totalOfRows + 1);
+    }
+    else{
+      totalOfRows -= 1;
     }
   }
 }
@@ -89,7 +103,8 @@ function encryptSentence(sentence){
   var finalSentence = finalArray.join(" ");
   console.log(findLowerSquare(326));
   console.log(findHigherSquare(326));
-  console.log(findNumberOfRowsToAddToAddToLower(18, 343));
+  console.log(findNumberOfRowsToAddToLowerSquare(7, 60));
+  console.log(findNumberOfRowsToSubtractFromHigherSquare(19, 326));
 }
 
 
