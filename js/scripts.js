@@ -125,10 +125,10 @@ function encryptSentence(sentence){
   });
 
   var length = wordsFlat.length;
+  var table = decideWhichWidthToUseForTable(length);
 
-
-  var column = 8;
-  var row = 9;
+  var column = table.columns;
+  var row = table.rows;
   //create the square
   var array2d = [];
   for(var i = 1; i <= row; i++) {
@@ -163,8 +163,7 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  console.log(decideWhichWidthToUseForTable(401));
-  console.log(decideWhichWidthToUseForTable(326));
+  console.log(finalSentence)
 
 
 }
@@ -172,5 +171,6 @@ function encryptSentence(sentence){
 
 
 $(document).ready(function(){
+  
   encryptSentence("don't compare yourself to others, compare yourself to the person you were yesterday")
 });
