@@ -37,6 +37,8 @@ function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
   }
 }
 
+if isP
+
 function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
   var square = higherSquareRoot * higherSquareRoot;
   
