@@ -9,7 +9,35 @@ function findLowerSquare(number){
   }
   return i - 1;
 }
+function findHigherSquare(number){
+  var i = 1;
+  while(true){
+    var square = i * i;
+    if (square > number){
+      break;
+    };
+    i++;
+  }
+  return i;
+}
 
+function findNumberOfRowsToAddToAddToLower(lowerSquareRoot,number){
+  var square = lowerSquareRoot * lowerSquareRoot;
+  var difference = number - square;
+  var totalOfAddedRows = lowerSquareRoot;
+  var newRows = 1;
+
+  while(true){
+    if(totalOfAddedRows > difference){
+      return newRows;
+    }
+    else{
+      totalOfAddedRows += lowerSquareRoot;
+      newRows++;
+    }
+  }
+
+}
 
 function encryptSentence(sentence){
  
@@ -56,7 +84,9 @@ function encryptSentence(sentence){
   }
 
   var finalSentence = finalArray.join(" ");
-  console.log(findLowerSquare(69));
+  console.log(findLowerSquare(326));
+  console.log(findHigherSquare(326));
+  console.log(findNumberOfRowsToAddToAddToLower(8, 69));
   console.log(finalSentence)
   console.log(finalArray)
   console.log(removeSpaces);
