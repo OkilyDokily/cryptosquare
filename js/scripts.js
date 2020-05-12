@@ -1,36 +1,14 @@
-function findLowerSquare(number){
-  var i = 1;
-  while(true){
-    var square = i * i;
-    if (square > number){
-      break;
-    };
-    i++;
-  }
-  return i - 1;
-}
-function findHigherSquare(number){
-  var i = 1;
-  while(true){
-    var square = i * i;
-    if (square > number){
-      break;
-    };
-    i++;
-  }
-  return i;
-}
 
 function createTableDimensions(number){
     if(isPerfectSquare(number)){
       return {columns:Math.floor(Math.sqrt(number)),rows: Math.floor(Math.sqrt(number))}
     }
-    var lowerColumn = findLowerSquare(number);
+    var lowerColumn = Math.floor(Math.sqrt(number))
     var numberOfRowsToAddToLowerSquare = findNumberOfRowsToAddToLowerSquare(lowerColumn, number)
     var rowsForLowerSquare = numberOfRowsToAddToLowerSquare + lowerColumn;
 
 
-    var higherColumn = findHigherSquare(number);
+    var higherColumn = lowerColumn + 1
     var numberOfRowsToSubtractFromHigherSquare = findNumberOfRowsToSubtractFromHigherSquare(higherColumn,number); 
     var rowsForHigherSquare = higherColumn - numberOfRowsToAddToLowerSquare;
     
