@@ -1,10 +1,9 @@
 
 function createTableDimensions(number){
-    if(isPerfectSquare(number)){
+    var lowerColumn = Math.floor(Math.sqrt(number));
+    if((lowerColumn * lowerColumn) === number){
       return {columns:Math.floor(Math.sqrt(number)),rows: Math.floor(Math.sqrt(number))}
     }
-    
-    var lowerColumn = Math.floor(Math.sqrt(number));
     
     var higherColumn = lowerColumn + 1
 
@@ -17,28 +16,6 @@ function createTableDimensions(number){
     }
 
 }
-
-function isPerfectSquare(number){
-  var test = Math.floor(Math.sqrt(number))
-  return ((test * test) === number);
-}
-
-function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
-  var square = lowerSquareRoot * lowerSquareRoot;
-  
-  var totalOfRows = lowerSquareRoot + 1;
-  var column = lowerSquareRoot;
-  
-  while(true){
-    if((totalOfRows * column) >= number){
-      return totalOfRows - lowerSquareRoot;
-    }
-    else{
-      totalOfRows += 1;
-    }
-  }
-}
-
 
 function encryptSentence(sentence){
  
