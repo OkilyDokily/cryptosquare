@@ -3,36 +3,19 @@ function createTableDimensions(number){
     if(isPerfectSquare(number)){
       return {columns:Math.floor(Math.sqrt(number)),rows: Math.floor(Math.sqrt(number))}
     }
-    var lowerColumn = Math.floor(Math.sqrt(number))
-    var numberOfRowsToAddToLowerSquare = findNumberOfRowsToAddToLowerSquare(lowerColumn, number)
-    var rowsForLowerSquare = numberOfRowsToAddToLowerSquare + lowerColumn;
-
-
-    var higherColumn = lowerColumn + 1
-    var numberOfRowsToSubtractFromHigherSquare = findNumberOfRowsToSubtractFromHigherSquare(higherColumn,number); 
-    var rowsForHigherSquare = higherColumn - numberOfRowsToAddToLowerSquare;
     
-    if(numberOfRowsToAddToLowerSquare < numberOfRowsToSubtractFromHigherSquare){
-      return {columns:lowerColumn,rows:rowsForLowerSquare}
+    var lowerColumn = Math.floor(Math.sqrt(number));
+    
+    var higherColumn = lowerColumn + 1
+
+    if(((higherColumn * higherColumn) - number) < higherColumn){
+      return {columns:higherColumn,rows: higherColumn}
     }
-    else if(numberOfRowsToSubtractFromHigherSquare < numberOfRowsToAddToLowerSquare){
-      return {columns:higherColumn,rows:rowsForHigherSquare}
-    }
+
     else{
-      var numberOfExcessCharactersOnTheLowerSquare = ((rowsForLowerSquare * lowerColumn) - number);
-      var numberOfExcessCharactersOnTheHigherSquare = ((rowsForHigherSquare *higherColumn) - number);
-      
-      if(numberOfExcessCharactersOnTheLowerSquare === numberOfExcessCharactersOnTheHigherSquare)
-      {
-        return {columns:lowerColumn,rows:rowsForLowerSquare}
-      }
-      else if(numberOfExcessCharactersOnTheLowerSquare < numberOfExcessCharactersOnTheHigherSquare){
-        return {columns:lowerColumn,rows:rowsForLowerSquare}
-      }
-      else{
-        return {columns:higherColumn,rows:rowsForHigherSquare}
-      }
+      return {columns:lowerColumn,rows:lowerColumn + 1}
     }
+
 }
 
 function isPerfectSquare(number){
@@ -55,24 +38,6 @@ function findNumberOfRowsToAddToLowerSquare(lowerSquareRoot,number){
     }
   }
 }
-
-
-function findNumberOfRowsToSubtractFromHigherSquare(higherSquareRoot,number){
-  var square = higherSquareRoot * higherSquareRoot;
-  
-  var totalOfRows = higherSquareRoot - 1;
-  var column = higherSquareRoot;
-  
-  while(true){
-    if((totalOfRows * column) <= number){
-      return higherSquareRoot - (totalOfRows + 1);
-    }
-    else{
-      totalOfRows -= 1;
-    }
-  }
-}
-
 
 
 function encryptSentence(sentence){
